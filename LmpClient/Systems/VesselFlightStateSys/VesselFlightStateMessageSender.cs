@@ -41,10 +41,11 @@ namespace LmpClient.Systems.VesselFlightStateSys
             msgData.WheelSteerTrim = flightState.wheelSteerTrim;
             msgData.WheelThrottle = flightState.wheelThrottle;
             msgData.WheelThrottleTrim = flightState.wheelThrottleTrim;
-            msgData.X = flightState.X;
-            msgData.Y = flightState.Y;
             msgData.Yaw = flightState.yaw;
             msgData.YawTrim = flightState.yawTrim;
+
+            msgData.X = flightState.X;
+            msgData.Y = flightState.Y;
             msgData.Z = flightState.Z;
 
             SendMessage(msgData);

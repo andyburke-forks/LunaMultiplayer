@@ -104,7 +104,7 @@ namespace LmpClient.Systems.Status
 
         private static string GetVesselText()
         {
-            return !VesselCommon.IsSpectating && FlightGlobals.ActiveVessel != null
+            return FlightGlobals.ActiveVessel != null
                 ? FlightGlobals.ActiveVessel.vesselName
                 : string.Empty;
         }
@@ -157,7 +157,7 @@ namespace LmpClient.Systems.Status
             {
                 case GameScenes.FLIGHT:
                     if (FlightGlobals.ActiveVessel != null)
-                        return !VesselCommon.IsSpectating ? GetCurrentShipStatus() : GetSpectatingShipStatus();
+                        return GetCurrentShipStatus();
                     break;
                 case GameScenes.EDITOR:
                     switch (EditorDriver.editorFacility)

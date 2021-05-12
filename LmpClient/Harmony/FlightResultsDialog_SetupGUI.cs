@@ -23,7 +23,7 @@ namespace LmpClient.Harmony
         {
             if (MainSystem.NetworkState < ClientState.Connected) return;
 
-            if (FlightGlobals.ActiveVessel && FlightGlobals.ActiveVessel.id == RevertSystem.Singleton.StartingVesselId && !VesselCommon.IsSpectating)
+            if (FlightGlobals.ActiveVessel && FlightGlobals.ActiveVessel.id == RevertSystem.Singleton.StartingVesselId)
                 return;
 
             ___Btn_revLaunch.onClick.RemoveAllListeners();

@@ -69,7 +69,7 @@ namespace LmpClient.Systems.VesselUpdateSys
 
         private void SendVesselUpdates()
         {
-            if (!VesselCommon.IsSpectating && VesselUpdateSystemReady)
+            if (VesselUpdateSystemReady)
             {
                 MessageSender.SendVesselUpdate(FlightGlobals.ActiveVessel);
             }
@@ -77,29 +77,23 @@ namespace LmpClient.Systems.VesselUpdateSys
 
         private void SendSecondaryVesselUpdates()
         {
-            if (!VesselCommon.IsSpectating)
-            {
-                SecondaryVesselsToUpdate.Clear();
-                SecondaryVesselsToUpdate.AddRange(VesselCommon.GetSecondaryVessels());
+            SecondaryVesselsToUpdate.Clear();
+            SecondaryVesselsToUpdate.AddRange(VesselCommon.GetSecondaryVessels());
 
-                for (var i = 0; i < SecondaryVesselsToUpdate.Count; i++)
-                {
-                    MessageSender.SendVesselUpdate(SecondaryVesselsToUpdate[i]);
-                }
+            for (var i = 0; i < SecondaryVesselsToUpdate.Count; i++)
+            {
+                MessageSender.SendVesselUpdate(SecondaryVesselsToUpdate[i]);
             }
         }
 
         private void SendUnloadedSecondaryVesselUpdates()
         {
-            if (!VesselCommon.IsSpectating)
-            {
-                AbandonedVesselsToUpdate.Clear();
-                AbandonedVesselsToUpdate.AddRange(VesselCommon.GetUnloadedSecondaryVessels());
+            AbandonedVesselsToUpdate.Clear();
+            AbandonedVesselsToUpdate.AddRange(VesselCommon.GetUnloadedSecondaryVessels());
 
-                for (var i = 0; i < AbandonedVesselsToUpdate.Count; i++)
-                {
-                    MessageSender.SendVesselUpdate(AbandonedVesselsToUpdate[i]);
-                }
+            for (var i = 0; i < AbandonedVesselsToUpdate.Count; i++)
+            {
+                MessageSender.SendVesselUpdate(AbandonedVesselsToUpdate[i]);
             }
         }
 

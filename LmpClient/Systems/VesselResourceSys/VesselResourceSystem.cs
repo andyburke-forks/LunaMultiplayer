@@ -54,7 +54,7 @@ namespace LmpClient.Systems.VesselResourceSys
 
         private void SendVesselResources()
         {
-            if (FlightGlobals.ActiveVessel != null && FlightGlobals.ActiveVessel.loaded && !VesselCommon.IsSpectating)
+            if (FlightGlobals.ActiveVessel != null && FlightGlobals.ActiveVessel.loaded)
             {
                 MessageSender.SendVesselResources(FlightGlobals.ActiveVessel);
             }

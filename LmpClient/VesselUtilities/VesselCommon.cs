@@ -30,7 +30,7 @@ namespace LmpClient.VesselUtilities
         public static bool UpdateIsForOwnVessel(Guid vesselId)
         {
             //Ignore updates to our own vessel if we aren't spectating
-            return !IsSpectating && FlightGlobals.ActiveVessel && FlightGlobals.ActiveVessel.id == vesselId;
+            return FlightGlobals.ActiveVessel && FlightGlobals.ActiveVessel.id == vesselId;
         }
 
         private static bool _isSpectating;
@@ -116,12 +116,12 @@ namespace LmpClient.VesselUtilities
                 return false;
 
             //Ignore vessel updates for our own updated vessels
-            if (LockSystem.LockQuery.UpdateLockBelongsToPlayer(vesselId, SettingsSystem.CurrentSettings.PlayerName))
-                return false;
+            // if (LockSystem.LockQuery.UpdateLockBelongsToPlayer(vesselId, SettingsSystem.CurrentSettings.PlayerName))
+            //     return false;
 
-            //Ignore vessel updates for our own updated vessels
-            if (LockSystem.LockQuery.UnloadedUpdateLockBelongsToPlayer(vesselId, SettingsSystem.CurrentSettings.PlayerName))
-                return false;
+            // //Ignore vessel updates for our own updated vessels
+            // if (LockSystem.LockQuery.UnloadedUpdateLockBelongsToPlayer(vesselId, SettingsSystem.CurrentSettings.PlayerName))
+            //     return false;
 
             return true;
         }

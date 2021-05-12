@@ -1,6 +1,7 @@
 ﻿using LmpClient.Base;
 using LmpClient.Extensions;
 using LmpCommon.Message.Data.Vessel;
+using LmpClient.VesselUtilities;
 
 namespace LmpClient.Systems.VesselFlightStateSys
 {
@@ -13,7 +14,7 @@ namespace LmpClient.Systems.VesselFlightStateSys
             value.SubspaceId = msgData.SubspaceId;
             value.PingSec = msgData.PingSec;
 
-            value.CtrlState.CopyFrom(msgData);
+            value.CtrlState.CopyFrom(msgData, VesselCommon.IsSpectating && FlightGlobals.ActiveVessel.situation > Vessel.Situations.PRELAUNCH );
         }
     }
 }

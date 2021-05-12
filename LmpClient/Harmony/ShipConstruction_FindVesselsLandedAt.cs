@@ -23,7 +23,7 @@ namespace LmpClient.Harmony
         {
             if (MainSystem.NetworkState < ClientState.Connected) return;
 
-            __result.RemoveAll(pv => LockSystem.LockQuery.ControlLockExists(pv.vesselID));
+//            __result.RemoveAll(pv => LockSystem.LockQuery.ControlLockExists(pv.vesselID));
         }
     }
 }

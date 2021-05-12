@@ -45,7 +45,8 @@ namespace LmpClient.Systems.VesselCrewSys
         /// </summary>
         public void OnCrewModified(Vessel vessel)
         {
-            if (!vessel.isEVA && LockSystem.LockQuery.UnloadedUpdateLockBelongsToPlayer(vessel.id, SettingsSystem.CurrentSettings.PlayerName))
+            // if (!vessel.isEVA && LockSystem.LockQuery.UnloadedUpdateLockBelongsToPlayer(vessel.id, SettingsSystem.CurrentSettings.PlayerName))
+            if (!vessel.isEVA)
                 VesselProtoSystem.Singleton.MessageSender.SendVesselMessage(vessel, true);
         }
     }

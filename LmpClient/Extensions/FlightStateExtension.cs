@@ -6,13 +6,10 @@ namespace LmpClient.Extensions
 {
     public static class FlightCtrlStateExtension
     {
-        public static void CopyFrom(this FlightCtrlState fs, VesselFlightStateMsgData msgData)
+        public static void CopyFrom(this FlightCtrlState fs, VesselFlightStateMsgData msgData, bool copy_position = true)
         {
             fs.mainThrottle = msgData.MainThrottle;
             fs.wheelThrottleTrim = msgData.WheelThrottleTrim;
-            fs.X = msgData.X;
-            fs.Y = msgData.Y;
-            fs.Z = msgData.Z;
             fs.killRot = msgData.KillRot;
             fs.gearUp = msgData.GearUp;
             fs.gearDown = msgData.GearDown;
@@ -26,6 +23,12 @@ namespace LmpClient.Extensions
             fs.pitchTrim = msgData.PitchTrim;
             fs.wheelSteer = msgData.WheelSteer;
             fs.wheelSteerTrim = msgData.WheelSteerTrim;
+
+            if ( copy_position ) {
+                fs.X = msgData.X;
+                fs.Y = msgData.Y;
+                fs.Z = msgData.Z;
+            }
         }
 
         public static void Lerp(this FlightCtrlState fs, FlightCtrlState from, FlightCtrlState to, float lerpPercentage)

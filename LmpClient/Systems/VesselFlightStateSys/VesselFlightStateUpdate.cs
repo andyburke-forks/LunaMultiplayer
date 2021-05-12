@@ -57,7 +57,7 @@ namespace LmpClient.Systems.VesselFlightStateSys
             SubspaceId = msgData.SubspaceId;
             PingSec = msgData.PingSec;
 
-            CtrlState.CopyFrom(msgData);
+            CtrlState.CopyFrom(msgData, VesselCommon.IsSpectating && FlightGlobals.ActiveVessel.situation >= Vessel.Situations.FLYING );
         }
 
         public void CopyFrom(VesselFlightStateUpdate update)

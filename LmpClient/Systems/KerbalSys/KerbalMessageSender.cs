@@ -35,7 +35,8 @@ namespace LmpClient.Systems.KerbalSys
         {
             if (pcm == null) return;
 
-            if (VesselCommon.IsSpectating) return;
+            // MOD: send kerbals even when spectating
+            //if (VesselCommon.IsSpectating) return;
 
             ConfigNode.ClearData();
             pcm.Save(ConfigNode);

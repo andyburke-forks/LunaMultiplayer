@@ -21,12 +21,14 @@ namespace LmpClient.Harmony
         {
             if (MainSystem.NetworkState < ClientState.Connected) return true;
 
+            /*
             var vessel = __instance.SelectedVessel;
             if (vessel != null && vessel.situation == Vessel.Situations.PRELAUNCH)
             {
                 if (!LockSystem.LockQuery.CanRecoverOrTerminateTheVessel(vessel.id, SettingsSystem.CurrentSettings.PlayerName))
                     return false;
             }
+            */
 
             return true;
         }

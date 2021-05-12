@@ -48,8 +48,8 @@
     <Reference Include="Microsoft.VisualStudio.Threading">
       <HintPath>..\External\Nuget\Microsoft.VisualStudio.Threading.16.8.55\lib\net472\Microsoft.VisualStudio.Threading.dll</HintPath>
     </Reference>
-    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>..\External\Nuget\Newtonsoft.Json.12.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\External\Nuget\Newtonsoft.Json.13.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="Open.Nat, Version=1.0.0.0, Culture=neutral, PublicKeyToken=f22a6a4582336c76, processorArchitecture=MSIL">
       <HintPath>..\External\Nuget\Open.NAT.2.1.0.0\lib\net45\Open.Nat.dll</HintPath>

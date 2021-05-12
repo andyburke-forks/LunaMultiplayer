@@ -22,6 +22,8 @@ namespace LmpClient.Harmony
         [HarmonyPostfix]
         private static void PostfixVesselMarkers()
         {
+            return;
+
             if (MainSystem.NetworkState < ClientState.Connected) return;
 
             MarkersToRemove.Clear();

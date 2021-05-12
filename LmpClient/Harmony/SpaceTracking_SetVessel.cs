@@ -24,27 +24,25 @@ namespace LmpClient.Harmony
 
             if (__instance.SelectedVessel != null)
             {
+                __instance.FlyButton.Unlock();
+
+                /*
                 if (!LockSystem.LockQuery.CanRecoverOrTerminateTheVessel(__instance.SelectedVessel.id, SettingsSystem.CurrentSettings.PlayerName))
                 {
-                    if (__instance.SelectedVessel.situation == Vessel.Situations.PRELAUNCH) __instance.FlyButton.Lock();
-                    else __instance.FlyButton.Unlock();
-
                     __instance.DeleteButton.Lock();
                     __instance.RecoverButton.Lock();
-
                     return;
                 }
+                */
 
                 //Check if vessel is landed or splashed on kerbin. Otherwise lock the recover button.
                 if (__instance.SelectedVessel.IsRecoverable)
                 {
-                    __instance.FlyButton.Unlock();
                     __instance.DeleteButton.Unlock();
                     __instance.RecoverButton.Unlock();
                 }
                 else
                 {
-                    __instance.FlyButton.Unlock();
                     __instance.DeleteButton.Unlock();
                     __instance.RecoverButton.Lock();
                 }

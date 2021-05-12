@@ -18,7 +18,7 @@ namespace LmpClient.Harmony
         {
             if (MainSystem.NetworkState < ClientState.Connected) return;
 
-            if (VesselCommon.IsSpectating && PauseMenu.exists && PauseMenu.isOpen)
+            if (PauseMenu.exists && PauseMenu.isOpen)
                 PauseMenu.canSaveAndExit = ClearToSaveStatus.CLEAR;
         }
     }

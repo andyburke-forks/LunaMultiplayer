@@ -139,7 +139,7 @@ namespace LmpClient.Systems.VesselFlightStateSys
         {
             Profiler.BeginSample(nameof(SendFlightState));
 
-            if (FlightStateSystemReady && TimeToSendFlightStateUpdate && !VesselCommon.IsSpectating && !FlightGlobals.ActiveVessel.isEVA)
+            if (FlightStateSystemReady && TimeToSendFlightStateUpdate && !FlightGlobals.ActiveVessel.isEVA)
             {
                 MessageSender.SendCurrentFlightState();
                 LastVesselFlightStateSentTime = LunaComputerTime.UtcNow;
@@ -157,7 +157,9 @@ namespace LmpClient.Systems.VesselFlightStateSys
             if (vessel == null || vessel.isEVA) return;
 
             //We must never have our own active and controlled vessel in the dictionary
-            if (!VesselCommon.IsSpectating && FlightGlobals.ActiveVessel == vessel)
+            //MOD: don't put the vessel in if we're spectating (not flying)
+            // if (!VesselCommon.IsSpectating && FlightGlobals.ActiveVessel == vessel)
+            if (FlightGlobals.ActiveVessel == vessel)
                 return;
 
             FlyByWireDictionary.TryAdd(vessel.id, st => LunaOnVesselFlyByWire(vessel.id, st));
@@ -235,7 +237,7 @@ namespace LmpClient.Systems.VesselFlightStateSys
 
             if (CurrentFlightState.TryGetValue(id, out var value))
             {
-                if (VesselCommon.IsSpectating)
+                if (VesselCommon.IsSpectating && FlightGlobals.ActiveVessel.situation >= Vessel.Situations.FLYING)
                 {
                     st.CopyFrom(value.GetInterpolatedValue());
                 }
@@ -243,6 +245,7 @@ namespace LmpClient.Systems.VesselFlightStateSys
                 {
                     //If we are close to a vessel and we both are in space don't copy the
                     //input controls as then the vessel jitters, specially if the other player has SAS on
+                    /*
                     if (FlightGlobals.ActiveVessel && FlightGlobals.ActiveVessel.situation > Vessel.Situations.FLYING)
                     {
                         var interpolatedState = value.GetInterpolatedValue();
@@ -253,9 +256,9 @@ namespace LmpClient.Systems.VesselFlightStateSys
                         st.killRot = interpolatedState.killRot;
                     }
                     else
-                    {
+                    {*/
                         st.CopyFrom(value.GetInterpolatedValue());
-                    }
+                    /*}*/
                 }
             }
         }

@@ -17,8 +17,6 @@ namespace LmpClient.Harmony
         [HarmonyPrefix]
         private static bool PrefixCouple(Part __instance, Part tgtPart, ref Guid __state)
         {
-            if (VesselCommon.IsSpectating) return false;
-
             __state = __instance.vessel.id;
             PartEvent.onPartCoupling.Fire(__instance, tgtPart);
 
@@ -28,8 +26,6 @@ namespace LmpClient.Harmony
         [HarmonyPostfix]
         private static void PostfixCouple(Part __instance, Part tgtPart, ref Guid __state)
         {
-            if (VesselCommon.IsSpectating) return;
-
             PartEvent.onPartCoupled.Fire(__instance, tgtPart, __state);
         }
     }

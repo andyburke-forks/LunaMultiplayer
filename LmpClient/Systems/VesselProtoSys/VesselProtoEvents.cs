@@ -33,7 +33,7 @@ namespace LmpClient.Systems.VesselProtoSys
         /// </summary>
         internal void OnSceneRequested(GameScenes requestedScene)
         {
-            if (HighLogic.LoadedSceneIsFlight && requestedScene != GameScenes.FLIGHT && !VesselCommon.IsSpectating)
+            if (HighLogic.LoadedSceneIsFlight && requestedScene != GameScenes.FLIGHT)
             {
                 //When quitting flight send the vessel one last time
                 VesselProtoSystem.Singleton.MessageSender.SendVesselMessage(FlightGlobals.ActiveVessel);
@@ -45,7 +45,7 @@ namespace LmpClient.Systems.VesselProtoSys
         /// </summary>
         public void TriggeredDataTransmission(ScienceData science, Vessel vessel, bool data)
         {
-            if (FlightGlobals.ActiveVessel != null && !VesselCommon.IsSpectating)
+            if (FlightGlobals.ActiveVessel != null)
             {
                 //We must send the science subject aswell!
                 var subject = ResearchAndDevelopment.GetSubjectByID(science.subjectID);
@@ -64,7 +64,7 @@ namespace LmpClient.Systems.VesselProtoSys
         /// </summary>
         public void ExperimentStored(ScienceData science)
         {
-            if (FlightGlobals.ActiveVessel != null && !VesselCommon.IsSpectating)
+            if (FlightGlobals.ActiveVessel != null)
             {
                 //We must send the science subject aswell!
                 var subject = ResearchAndDevelopment.GetSubjectByID(science.subjectID);
@@ -83,7 +83,7 @@ namespace LmpClient.Systems.VesselProtoSys
         /// </summary>
         public void ExperimentReset(Vessel data)
         {
-            if (FlightGlobals.ActiveVessel != null && !VesselCommon.IsSpectating)
+            if (FlightGlobals.ActiveVessel != null)
             {
                 LunaLog.Log("Detected a experiment reset. Sending vessel definition to the server");
                 System.MessageSender.SendVesselMessage(FlightGlobals.ActiveVessel, true);

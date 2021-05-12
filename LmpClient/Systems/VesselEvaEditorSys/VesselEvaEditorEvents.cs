@@ -10,13 +10,11 @@ namespace LmpClient.Systems.VesselEvaEditorSys
     {
         public void EVAConstructionModePartAttached(Vessel vessel, Part part)
         {
-            if (VesselCommon.IsSpectating) return;
             VesselProtoSystem.Singleton.MessageSender.SendVesselMessage(vessel);
         }
 
         public void EVAConstructionModePartDetached(Vessel vessel, Part part)
         {
-            if (VesselCommon.IsSpectating) return;
             VesselProtoSystem.Singleton.MessageSender.SendVesselMessage(vessel);
         }
 

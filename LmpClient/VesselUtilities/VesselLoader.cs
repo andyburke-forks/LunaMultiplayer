@@ -82,10 +82,13 @@ namespace LmpClient.VesselUtilities
                 vesselProto.vesselRef.GoOnRails();
             }
 
+            /*
             if (vesselProto.vesselRef.situation > Vessel.Situations.PRELAUNCH)
             {
                 vesselProto.vesselRef.orbitDriver.updateFromParameters();
             }
+            */
+            vesselProto.vesselRef.orbitDriver.updateFromParameters();
 
             if (double.IsNaN(vesselProto.vesselRef.orbitDriver.pos.x))
             {

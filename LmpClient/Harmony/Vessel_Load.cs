@@ -17,7 +17,8 @@ namespace LmpClient.Harmony
         {
             if (FlightGlobals.ActiveVessel != null && FlightGlobals.ActiveVessel.loaded && FlightGlobals.ActiveVessel.id != __instance.id)
             {
-                return !SafetyBubbleSystem.Singleton.IsInSafetyBubble(__instance);
+                // return !SafetyBubbleSystem.Singleton.IsInSafetyBubble(__instance);
+                return true;
             }
 
             return true;

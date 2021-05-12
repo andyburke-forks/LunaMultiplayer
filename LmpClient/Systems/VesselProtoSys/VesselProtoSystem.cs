@@ -25,7 +25,7 @@ namespace LmpClient.Systems.VesselProtoSys
         public ConcurrentDictionary<Guid, VesselProtoQueue> VesselProtos { get; } = new ConcurrentDictionary<Guid, VesselProtoQueue>();
 
         public bool ProtoSystemReady => Enabled && FlightGlobals.ready && HighLogic.LoadedScene == GameScenes.FLIGHT &&
-            FlightGlobals.ActiveVessel != null && !VesselCommon.IsSpectating;
+            FlightGlobals.ActiveVessel != null;
 
         public VesselProtoEvents VesselProtoEvents { get; } = new VesselProtoEvents();
 

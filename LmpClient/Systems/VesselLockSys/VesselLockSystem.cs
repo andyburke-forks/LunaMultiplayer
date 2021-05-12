@@ -96,13 +96,14 @@ namespace LmpClient.Systems.VesselLockSys
             VesselCommon.IsSpectating = true;
 
             //Lock all vessel controls
-            InputLockManager.SetControlLock(BlockAllControls, SpectateLock);
+            // InputLockManager.SetControlLock(BlockAllControls, SpectateLock);
 
             LockSystem.Singleton.AcquireSpectatorLock();
-            LockSystem.Singleton.ReleaseAllPlayerSpecifiedLocks(LockType.Control, LockType.Update, LockType.Kerbal, LockType.UnloadedUpdate);
+            //LockSystem.Singleton.ReleaseAllPlayerSpecifiedLocks(LockType.Control, LockType.Update, LockType.Kerbal, LockType.UnloadedUpdate);
 
-            //Disable "EVA" button
-            HighLogic.CurrentGame.Parameters.Flight.CanEVA = false;
+            // //Disable "EVA" button
+            // HighLogic.CurrentGame.Parameters.Flight.CanEVA = false;
+            
             SpectateEvent.onStartSpectating.Fire();
         }
 
@@ -111,10 +112,10 @@ namespace LmpClient.Systems.VesselLockSys
             VesselCommon.IsSpectating = false;
 
             //Unlock all vessel controls
-            InputLockManager.RemoveControlLock(SpectateLock);
-
-            if (LockSystem.LockQuery.SpectatorLockExists(SettingsSystem.CurrentSettings.PlayerName))
-                LockSystem.Singleton.ReleaseSpectatorLock();
+/*            InputLockManager.RemoveControlLock(SpectateLock);
+*/
+             if (LockSystem.LockQuery.SpectatorLockExists(SettingsSystem.CurrentSettings.PlayerName))
+                 LockSystem.Singleton.ReleaseSpectatorLock();
 
             //We are not spectating anymore so try to get as many unloaded update locks as possible
             foreach (var vessel in FlightGlobals.Vessels)
@@ -123,11 +124,11 @@ namespace LmpClient.Systems.VesselLockSys
                     LockSystem.Singleton.AcquireUnloadedUpdateLock(vessel.id);
             }
 
-            if (HighLogic.CurrentGame?.Parameters?.Flight != null)
-                HighLogic.CurrentGame.Parameters.Flight.CanEVA = true;
+            // if (HighLogic.CurrentGame?.Parameters?.Flight != null)
+            //     HighLogic.CurrentGame.Parameters.Flight.CanEVA = true;
 
-            if (PauseMenu.exists && PauseMenu.isOpen)
-                PauseMenu.canSaveAndExit = FlightGlobals.ClearToSave();
+            // if (PauseMenu.exists && PauseMenu.isOpen)
+            //     PauseMenu.canSaveAndExit = FlightGlobals.ClearToSave();
 
             SpectateEvent.onFinishedSpectating.Fire();
         }

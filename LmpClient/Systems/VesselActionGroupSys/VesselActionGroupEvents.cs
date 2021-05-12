@@ -8,9 +8,9 @@ namespace LmpClient.Systems.VesselActionGroupSys
     {
         public void ActionGroupFired(Vessel vessel, KSPActionGroup actionGroup, bool value)
         {
-            if (LockSystem.LockQuery.UpdateLockExists(vessel.id) &&
-                !LockSystem.LockQuery.UpdateLockBelongsToPlayer(vessel.id, SettingsSystem.CurrentSettings.PlayerName))
-                return;
+            // if (LockSystem.LockQuery.UpdateLockExists(vessel.id) &&
+            //     !LockSystem.LockQuery.UpdateLockBelongsToPlayer(vessel.id, SettingsSystem.CurrentSettings.PlayerName))
+            //     return;
 
             System.MessageSender.SendVesselActionGroup(FlightGlobals.ActiveVessel, actionGroup, value);
         }

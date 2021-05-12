@@ -75,11 +75,13 @@ namespace LmpClient.Systems.VesselImmortalSys
         {
             if (vessel == null) return;
 
-            var isOurs = LockSystem.LockQuery.ControlLockBelongsToPlayer(vessel.id, SettingsSystem.CurrentSettings.PlayerName) ||
-                         LockSystem.LockQuery.UpdateLockBelongsToPlayer(vessel.id, SettingsSystem.CurrentSettings.PlayerName) ||
-                         !LockSystem.LockQuery.UpdateLockExists(vessel.id);
+            // var isOurs = LockSystem.LockQuery.ControlLockBelongsToPlayer(vessel.id, SettingsSystem.CurrentSettings.PlayerName) ||
+            //              LockSystem.LockQuery.UpdateLockBelongsToPlayer(vessel.id, SettingsSystem.CurrentSettings.PlayerName) ||
+            //              !LockSystem.LockQuery.UpdateLockExists(vessel.id);
 
-            vessel.SetImmortal(!isOurs);
+            var isPiloted = LockSystem.LockQuery.UpdateLockExists(vessel.id);
+
+            vessel.SetImmortal(!isPiloted);
         }
 
         #endregion
