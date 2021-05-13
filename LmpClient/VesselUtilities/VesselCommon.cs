@@ -112,8 +112,8 @@ namespace LmpClient.VesselUtilities
                 return false;
 
             //Ignore vessel updates for our own controlled vessel
-            if (LockSystem.LockQuery.ControlLockBelongsToPlayer(vesselId, SettingsSystem.CurrentSettings.PlayerName))
-                return false;
+            // if (LockSystem.LockQuery.ControlLockBelongsToPlayer(vesselId, SettingsSystem.CurrentSettings.PlayerName))
+            //     return false;
 
             //Ignore vessel updates for our own updated vessels
             // if (LockSystem.LockQuery.UpdateLockBelongsToPlayer(vesselId, SettingsSystem.CurrentSettings.PlayerName))

@@ -21,6 +21,7 @@ namespace Server.Message
         public override void HandleMessage(ClientStructure client, IClientMessageBase message)
         {
             var messageData = message.Data as VesselBaseMsgData;
+
             switch (messageData?.VesselMessageType)
             {
                 case VesselMessageType.Sync:

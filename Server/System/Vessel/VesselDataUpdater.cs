@@ -14,6 +14,8 @@ namespace Server.System.Vessel
     /// </summary>
     public partial class VesselDataUpdater
     {
+        public static double LastUpdateTime = 0;
+
         #region Semaphore
 
         /// <summary>

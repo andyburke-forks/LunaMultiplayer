@@ -69,7 +69,8 @@ namespace LmpClient.VesselUtilities
                 return false;
             }
 
-            VesselPositionSystem.Singleton.ForceUpdateVesselPosition(vesselProto.vesselRef.id);
+            if ( FlightGlobals.ActiveVessel.situation >= Vessel.Situations.FLYING )
+                VesselPositionSystem.Singleton.ForceUpdateVesselPosition(vesselProto.vesselRef.id);
 
             vesselProto.vesselRef.protoVessel = vesselProto;
             if (vesselProto.vesselRef.isEVA)
